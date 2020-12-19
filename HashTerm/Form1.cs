@@ -21,31 +21,29 @@ namespace HashTerm
 
         private void uxExecButton_Click(object sender, EventArgs e)
         {
+            Execute();
+        }
+
+        private void uxCmdInput_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Execute();
+            }
+        }
+
+        private void Execute()
+        {
             ProcessStartInfo command = new ProcessStartInfo() { FileName = "/bin/bash", Arguments = uxCmdInput.Text + " | tee ~/output.txt" };
             Process p = new Process() { StartInfo = command, };
             p.Start();
             string cmdOutput;
-            using (StreamReader readIn = new StreamReader("~/output.txt"))
+            using (StreamReader readIn = new StreamReader("output.txt"))
             {
                 cmdOutput = readIn.ReadToEnd();
                 readIn.Close();
             }
-            using (StreamWriter writeOut = File.AppendText("~/output.html"))
-            { 
-                writeOut.WriteLine("<html>");
-                writeOut.WriteLine("<head>");
-                writeOut.WriteLine("<title> Editing document.docx </title>");
-                writeOut.WriteLine("</head>");
-                writeOut.WriteLine("<body>");
-                writeOut.WriteLine("<h1> document.docx </h1>");
-                writeOut.Write("<input type=text value=");
-                writeOut.Write(cmdOutput);
-                writeOut.WriteLine(">");
-                writeOut.WriteLine("</body>");
-                writeOut.WriteLine("</html>");
-                writeOut.Close();
-            }
-            uxWebView.Url = new Uri("~/output.html");
+            uxOutput.Text = cmdOutput;
         }
     }
 }

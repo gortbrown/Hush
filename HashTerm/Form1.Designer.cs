@@ -30,7 +30,7 @@
         {
             this.uxExecButton = new System.Windows.Forms.Button();
             this.uxCmdInput = new System.Windows.Forms.TextBox();
-            this.uxWebView = new System.Windows.Forms.WebBrowser();
+            this.uxOutput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // uxExecButton
@@ -49,25 +49,26 @@
             this.uxCmdInput.Name = "uxCmdInput";
             this.uxCmdInput.Size = new System.Drawing.Size(724, 20);
             this.uxCmdInput.TabIndex = 1;
+            this.uxCmdInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.uxCmdInput_KeyPress);
             // 
-            // uxWebView
+            // uxOutput
             // 
-            this.uxWebView.Location = new System.Drawing.Point(12, 35);
-            this.uxWebView.MinimumSize = new System.Drawing.Size(20, 20);
-            this.uxWebView.Name = "uxWebView";
-            this.uxWebView.Size = new System.Drawing.Size(775, 403);
-            this.uxWebView.TabIndex = 2;
+            this.uxOutput.Location = new System.Drawing.Point(13, 35);
+            this.uxOutput.Multiline = true;
+            this.uxOutput.Name = "uxOutput";
+            this.uxOutput.Size = new System.Drawing.Size(775, 403);
+            this.uxOutput.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.uxWebView);
+            this.Controls.Add(this.uxOutput);
             this.Controls.Add(this.uxCmdInput);
             this.Controls.Add(this.uxExecButton);
             this.Name = "Form1";
-            this.Text = "Browse";
+            this.Text = "Notpad";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,7 +78,7 @@
 
         private System.Windows.Forms.Button uxExecButton;
         private System.Windows.Forms.TextBox uxCmdInput;
-        private System.Windows.Forms.WebBrowser uxWebView;
+        private System.Windows.Forms.TextBox uxOutput;
     }
 }
 
