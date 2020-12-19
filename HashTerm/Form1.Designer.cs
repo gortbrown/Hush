@@ -56,7 +56,7 @@
             this.uxOutput.Location = new System.Drawing.Point(13, 35);
             this.uxOutput.Multiline = true;
             this.uxOutput.Name = "uxOutput";
-            this.uxOutput.Size = new System.Drawing.Size(775, 362);
+            this.uxOutput.Size = new System.Drawing.Size(775, 403);
             this.uxOutput.TabIndex = 2;
             // 
             // Form1
